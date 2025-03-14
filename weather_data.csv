@@ -1,0 +1,8 @@
+city,temperature,humidity,pressure,wind_speed,cloud_cover,rainfall
+Mumbai,28.99,70,1010,0,20,0
+Delhi,26.05,47,1007,1.54,40,0
+Chennai,28.33,81,1011,2.24,20,0
+Kolkata,28.97,74,1007,4.12,0,0
+Bangalore,27.04,60,1012,4.12,93,0
+Hyderabad,29.73,34,1010,3.09,55,0
+Pune,29.29,34,1011,2.84,27,0
