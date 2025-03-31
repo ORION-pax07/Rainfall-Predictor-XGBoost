@@ -1,0 +1,308 @@
+/* 🌟 Full Page Layout */
+.home-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #050a12 0%, #0a1a2e 100%); /* Extreme dark gradient */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* 🎇 Particle Background */
+.particles {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+
+/* 🌍 Navigation Bar */
+.nav-bar {
+    position: absolute;
+    top: 30px;
+    display: flex;
+    gap: 30px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 12px 24px;
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+    z-index: 10;
+}
+
+.nav-link {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s;
+}
+
+.nav-link:hover {
+    color: #00e5ff;
+    text-shadow: 0 0 5px #00e5ff;
+    transform: scale(1.1);
+}
+
+/* ✨ Hero Section */
+.hero {
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: right;
+    z-index: 5;
+}
+
+.hero-title {
+    font-size: 50px;
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(0, 230, 255, 0.7);
+}
+
+.hero-subtitle {
+    font-size: 20px;
+    color: #cfd8dc;
+    text-shadow: 0 0 5px rgba(0, 230, 255, 0.5);
+}
+
+/* 🎴 Image Stack (Inspired by Devin's Site) */
+.image-stack {
+    position: absolute;
+    left: 12%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+/* Stacked Image Styling */
+.stacked-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease, z-index 0s;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px rgba(0, 230, 255, 0.7);
+    transform-origin: left center; /* Set the origin for the page flip effect */
+}
+
+/* Specific positioning and rotation for each image to mimic Devin’s stack */
+.stacked-img:nth-child(1) {
+    transform: translateY(60px) translateX(-90px) rotate(-15deg) scale(0.85); /* Bottom image */
+    z-index: 1;
+    opacity: 0.85;
+}
+
+.stacked-img:nth-child(2) {
+    transform: translateY(10px) translateX(-60px) rotate(-15deg) scale(0.92); /* Middle image, moved more up */
+    z-index: 2;
+    opacity: 0.92;
+}
+
+.stacked-img:nth-child(3) {
+    transform: translateY(0px) rotate(-5deg) scale(1.0); /* Top image */
+    z-index: 3;
+    opacity: 1;
+    box-shadow: 0px 0px 30px rgba(0, 230, 255, 0.9);
+}
+
+/* Page-turn effect for the middle image (single page turn) */
+.stacked-img.flipping-single:nth-child(2) {
+    animation: pageTurnMiddleToFront 0.8s ease forwards;
+}
+
+/* Page-turn effect for the last image (double page turn) */
+.stacked-img.flipping-double:nth-child(1) {
+    animation: pageTurnLastToFront 1.6s ease forwards; /* Double duration for double page turn */
+}
+
+/* Animations for other images during single page turn */
+.stacked-img.flipping-single:nth-child(3) {
+    animation: pageTurnFrontToBack 0.8s ease forwards;
+}
+
+.stacked-img.flipping-single:nth-child(1) {
+    animation: pageTurnBackToMiddle 0.8s ease forwards;
+}
+
+/* Animations for other images during double page turn */
+.stacked-img.flipping-double:nth-child(3) {
+    animation: pageTurnFrontToMiddle 1.6s ease forwards;
+}
+
+.stacked-img.flipping-double:nth-child(2) {
+    animation: pageTurnMiddleToBack 1.6s ease forwards;
+}
+
+/* Keyframes for the single page-turn effect (middle to front) */
+@keyframes pageTurnMiddleToFront {
+    0% {
+        transform: translateY(10px) translateX(-60px) rotate(-15deg) scale(0.92);
+        z-index: 2;
+        opacity: 0.92;
+    }
+    50% {
+        transform: translateY(0px) translateX(0px) rotateY(-90deg) scale(1.0);
+        opacity: 0.5;
+        z-index: 4;
+    }
+    100% {
+        transform: translateY(0px) translateX(0px) rotate(-5deg) scale(1.0);
+        z-index: 3;
+        opacity: 1;
+        box-shadow: 0px 0px 30px rgba(0, 230, 255, 0.9);
+    }
+}
+
+/* Keyframes for the front to back (disappear to the right) */
+@keyframes pageTurnFrontToBack {
+    0% {
+        transform: translateY(0px) rotate(-5deg) scale(1.0);
+        z-index: 3;
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(60px) translateX(-90px) rotateY(90deg) scale(0.85);
+        opacity: 0.5;
+        z-index: 1;
+    }
+    100% {
+        transform: translateY(60px) translateX(-90px) rotate(-15deg) scale(0.85);
+        z-index: 1;
+        opacity: 0.85;
+    }
+}
+
+/* Keyframes for the back to middle */
+@keyframes pageTurnBackToMiddle {
+    0% {
+        transform: translateY(60px) translateX(-90px) rotate(-15deg) scale(0.85);
+        z-index: 1;
+        opacity: 0.85;
+    }
+    50% {
+        transform: translateY(10px) translateX(-60px) rotateY(-45deg) scale(0.92);
+        opacity: 0.92;
+        z-index: 2;
+    }
+    100% {
+        transform: translateY(10px) translateX(-60px) rotate(-15deg) scale(0.92);
+        z-index: 2;
+        opacity: 0.92;
+    }
+}
+
+/* Keyframes for the double page-turn effect (last to front) */
+@keyframes pageTurnLastToFront {
+    0% {
+        transform: translateY(60px) translateX(-90px) rotate(-15deg) scale(0.85);
+        z-index: 1;
+        opacity: 0.85;
+    }
+    25% {
+        transform: translateY(10px) translateX(-60px) rotateY(-90deg) scale(0.92);
+        opacity: 0.92;
+        z-index: 2;
+    }
+    50% {
+        transform: translateY(10px) translateX(-60px) rotate(-15deg) scale(0.92);
+        z-index: 2;
+        opacity: 0.92;
+    }
+    75% {
+        transform: translateY(0px) translateX(0px) rotateY(-90deg) scale(1.0);
+        opacity: 0.5;
+        z-index: 4;
+    }
+    100% {
+        transform: translateY(0px) translateX(0px) rotate(-5deg) scale(1.0);
+        z-index: 3;
+        opacity: 1;
+        box-shadow: 0px 0px 30px rgba(0, 230, 255, 0.9);
+    }
+}
+
+/* Keyframes for front to middle (during double page turn) */
+@keyframes pageTurnFrontToMiddle {
+    0% {
+        transform: translateY(0px) rotate(-5deg) scale(1.0);
+        z-index: 3;
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(10px) translateX(-60px) rotateY(90deg) scale(0.92);
+        opacity: 0.92;
+        z-index: 2;
+    }
+    100% {
+        transform: translateY(10px) translateX(-60px) rotate(-15deg) scale(0.92);
+        z-index: 2;
+        opacity: 0.92;
+    }
+}
+
+/* Keyframes for middle to back (during double page turn) */
+@keyframes pageTurnMiddleToBack {
+    0% {
+        transform: translateY(10px) translateX(-60px) rotate(-15deg) scale(0.92);
+        z-index: 2;
+        opacity: 0.92;
+    }
+    50% {
+        transform: translateY(60px) translateX(-90px) rotateY(90deg) scale(0.85);
+        opacity: 0.5;
+        z-index: 1;
+    }
+    100% {
+        transform: translateY(60px) translateX(-90px) rotate(-15deg) scale(0.85);
+        z-index: 1;
+        opacity: 0.85;
+    }
+}
+
+/* 📱 Responsive Design */
+@media screen and (max-width: 768px) {
+    .hero {
+        right: 5%;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 40px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+    }
+
+    .image-stack {
+        left: 12%;
+        top: 50%;
+        transform: translateX(0%) translateY(-50%);
+        width: 200px;
+        height: 200px;
+    }
+
+    .stacked-img:nth-child(1) {
+        transform: translateY(40px) translateX(-60px) rotate(-15deg) scale(0.85);
+    }
+
+    .stacked-img:nth-child(2) {
+        transform: translateY(10px) translateX(-40px) rotate(-15deg) scale(0.92);
+    }
+
+    .stacked-img:nth-child(3) {
+        transform: translateY(0px) rotate(-5deg) scale(1.0);
+    }
+}

@@ -1,0 +1,153 @@
+/* 🌟 Predictor Page Layout */
+.predictor-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #041024 0%, #0c233d 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 100px; /* Ensures heading stays below the navigation */
+}
+
+/* 🌍 Navigation Bar */
+.nav-bar {
+    position: absolute;
+    top: 20px;
+    display: flex;
+    gap: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 12px 30px;
+    border-radius: 25px;
+    backdrop-filter: blur(8px);
+    z-index: 10;
+    box-shadow: 0px 0px 15px rgba(0, 230, 255, 0.5);
+}
+
+/* 🔹 Page Heading */
+.page-heading {
+    font-size: 42px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0px 0px 20px rgba(0, 230, 255, 0.9);
+    margin-top: 20px; /* Adjusted for proper spacing */
+    text-align: center;
+}
+
+/* 🌐 API / Manual Toggle Buttons */
+.mode-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.mode-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #00e5ff;
+    color: black;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.mode-button:hover {
+    background-color: #00bcd4;
+    transform: scale(1.05);
+}
+
+.mode-button.active {
+    background-color: #00bcd4;
+    box-shadow: 0px 0px 10px rgba(0, 230, 255, 0.7);
+}
+
+/* ✅ API Input Form (Untouched, as per request) */
+.predictor-content {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.city-input {
+    padding: 14px;
+    width: 320px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 1px solid #00e5ff;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    box-shadow: 0px 0px 12px rgba(0, 230, 255, 0.6);
+    transition: all 0.3s ease;
+}
+
+.city-input:focus {
+    outline: none;
+    box-shadow: 0px 0px 15px rgba(0, 230, 255, 1);
+}
+
+/* 🚀 API Predict Button */
+.predict-button {
+    padding: 14px 28px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #00e5ff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0px 0px 12px rgba(0, 230, 255, 0.7);
+    margin-top: 20px;
+}
+
+.predict-button:hover {
+    background-color: #00bcd4;
+    transform: scale(1.05);
+}
+
+/* ✅ Manual Input Section - Fixed Alignment */
+.manual-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px; /* Keeps form compact */
+    gap: 15px;
+    margin-top: 30px;
+}
+
+/* 📊 Manual Input Boxes - Properly Aligned */
+.manual-input-box {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #00e5ff;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    box-shadow: 0px 0px 12px rgba(0, 230, 255, 0.6);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.manual-input-box:focus {
+    outline: none;
+    box-shadow: 0px 0px 15px rgba(0, 230, 255, 1);
+}
+
+/* 🚀 Manual Mode Predict Button - Centered Below Inputs */
+.manual-predict-button {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* 🛠 Fixing Alignment Issues for Small Screens */
+@media screen and (max-width: 768px) {
+    .manual-inputs {
+        width: 90%;
+    }
+}
